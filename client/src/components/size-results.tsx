@@ -225,32 +225,7 @@ export default function SizeResults({ recommendations, confidence }: SizeResults
         </div>
       </motion.div>
 
-      {/* Confidence Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1 }}
-        className="p-4 bg-zatorres-green bg-opacity-10 rounded-lg"
-      >
-        <div className="flex items-center justify-between">
-          <div>
-            <h4 className="font-semibold text-zatorres-green">Fit Confidence</h4>
-            <p className="text-sm text-zatorres-sage">Based on your measurements</p>
-          </div>
-          <div className="text-right">
-            <div className="text-2xl font-bold text-zatorres-green">{confidence}%</div>
-            <div className="text-xs text-zatorres-sage">Match</div>
-          </div>
-        </div>
-        <div className="mt-3 bg-zatorres-sage bg-opacity-20 rounded-full h-2">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${confidence}%` }}
-            transition={{ duration: 1, delay: 1.2 }}
-            className="bg-zatorres-green h-2 rounded-full"
-          />
-        </div>
-      </motion.div>
+
     </motion.div>
   );
 }

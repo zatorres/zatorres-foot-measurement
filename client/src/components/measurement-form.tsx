@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
-import { Calculator, Ruler, CircleDot } from 'lucide-react';
+import { Calculator, Ruler, CircleDot, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -22,6 +22,7 @@ type FormData = z.infer<typeof formSchema>;
 interface MeasurementFormProps {
   onSubmit: (data: FormData) => void;
   isLoading?: boolean;
+  onReset?: () => void;
 }
 
 export default function MeasurementForm({ onSubmit, isLoading }: MeasurementFormProps) {
@@ -77,6 +78,17 @@ export default function MeasurementForm({ onSubmit, isLoading }: MeasurementForm
     } else {
       setBallGirthInches(value);
     }
+  };
+
+  const handleReset = () => {
+    form.reset({
+      lastType: '',
+      footLengthMm: 0,
+      ballGirthMm: 0,
+    });
+    setFootLengthInches('');
+    setBallGirthInches('');
+    onReset?.();
   };
 
   return (
@@ -195,8 +207,8 @@ export default function MeasurementForm({ onSubmit, isLoading }: MeasurementForm
             </div>
           </div>
 
-          {/* Submit Button */}
-          <div className="text-center">
+          {/* Submit and Reset Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
               type="submit"
               disabled={isLoading}
@@ -204,6 +216,16 @@ export default function MeasurementForm({ onSubmit, isLoading }: MeasurementForm
             >
               <Calculator className="mr-2" size={16} />
               {isLoading ? 'Calculating...' : 'Calculate My Size'}
+            </Button>
+            
+            <Button
+              type="button"
+              onClick={handleReset}
+              variant="outline"
+              className="border-2 border-zatorres-sage text-zatorres-sage px-6 py-4 rounded-lg font-semibold hover:bg-zatorres-sage hover:text-white transition-all duration-200"
+            >
+              <RotateCcw className="mr-2" size={16} />
+              Reset Measurements
             </Button>
           </div>
         </form>

@@ -79,6 +79,13 @@ export default function SizingAssistant() {
     calculateSizeMutation.mutate(data);
   };
 
+  const handleReset = () => {
+    setCurrentStep(1);
+    setRecommendations([]);
+    setConfidence(0);
+    setShowResults(false);
+  };
+
   return (
     <div className="min-h-screen bg-zatorres-cream">
       {/* Header */}
@@ -122,6 +129,7 @@ export default function SizingAssistant() {
           <MeasurementForm 
             onSubmit={handleFormSubmit} 
             isLoading={calculateSizeMutation.isPending}
+            onReset={handleReset}
           />
         )}
 
