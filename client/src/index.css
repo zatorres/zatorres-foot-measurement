@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --background: hsl(36, 44%, 98%);
+  --foreground: hsl(120, 65%, 6%);
+  --muted: hsl(120, 15%, 92%);
+  --muted-foreground: hsl(120, 8%, 50%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(120, 65%, 6%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(120, 65%, 6%);
+  --border: hsl(120, 8%, 82%);
+  --input: hsl(120, 8%, 82%);
+  --primary: hsl(120, 65%, 6%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(120, 8%, 82%);
+  --secondary-foreground: hsl(120, 65%, 6%);
+  --accent: hsl(48, 52%, 66%);
+  --accent-foreground: hsl(120, 65%, 6%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(120, 65%, 6%);
+  --radius: 0.5rem;
+  
+  --zatorres-green: hsl(120, 65%, 6%);
+  --zatorres-sage: hsl(120, 8%, 53%);
+  --zatorres-cream: hsl(36, 44%, 98%);
+  --zatorres-gold: hsl(48, 52%, 66%);
+}
+
+.dark {
+  --background: hsl(120, 10%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(120, 10%, 15%);
+  --muted-foreground: hsl(120, 5%, 65%);
+  --popover: hsl(120, 10%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(120, 10%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(120, 10%, 15%);
+  --input: hsl(120, 10%, 15%);
+  --primary: hsl(120, 65%, 6%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(120, 10%, 15%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(48, 52%, 66%);
+  --accent-foreground: hsl(120, 65%, 6%);
+  --destructive: hsl(0, 62%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(120, 5%, 84%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .zatorres-green {
+    color: var(--zatorres-green);
+  }
+  
+  .bg-zatorres-green {
+    background-color: var(--zatorres-green);
+  }
+  
+  .zatorres-sage {
+    color: var(--zatorres-sage);
+  }
+  
+  .bg-zatorres-sage {
+    background-color: var(--zatorres-sage);
+  }
+  
+  .zatorres-cream {
+    color: var(--zatorres-cream);
+  }
+  
+  .bg-zatorres-cream {
+    background-color: var(--zatorres-cream);
+  }
+  
+  .zatorres-gold {
+    color: var(--zatorres-gold);
+  }
+  
+  .bg-zatorres-gold {
+    background-color: var(--zatorres-gold);
+  }
+}
