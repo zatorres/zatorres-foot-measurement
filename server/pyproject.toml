@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zatorres-foot-measurement"
+version = "1.0.0"
+description = "Flask backend for processing foot measurement photos"
+requires-python = ">=3.11"
+dependencies = [
+    "Flask>=3.0.0",
+    "flask-cors>=4.0.0",
+    "opencv-python-headless>=4.8.0",
+    "numpy>=1.24.0",
+    "gunicorn>=21.0.0",
+    "Pillow>=10.0.0",
+]
+
+[tool.setuptools]
+packages = ["."] 

@@ -8,6 +8,11 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+# Health check endpoint for Render
+@app.route('/healthz', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'healthy', 'service': 'zatorres-foot-measurement'})
+
 # Known paper sizes in mm
 PAPER_SIZES = {
     'A4': (210, 297),  # width, height in mm
@@ -18,6 +23,7 @@ PAPER_SIZES = {
 def measure_foot():
     if 'photo' not in request.files:
         return jsonify({'error': 'No photo uploaded'}), 400
+    
     photo = request.files['photo']
     paper_type = request.form.get('paper_type', 'A4')
     paper_width_mm, paper_height_mm = PAPER_SIZES.get(paper_type, PAPER_SIZES['A4'])
@@ -44,6 +50,7 @@ def measure_foot():
     contours, _ = cv2.findContours(edged, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     paper_contour = None
     max_area = 0
+    
     for cnt in contours:
         peri = cv2.arcLength(cnt, True)
         approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
@@ -79,6 +86,7 @@ def measure_foot():
     foot_contours, _ = cv2.findContours(masked, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     foot_contour = None
     max_foot_area = 0
+    
     for cnt in foot_contours:
         area = cv2.contourArea(cnt)
         if area > max_foot_area and area < max_area * 0.9:  # Ignore the paper itself
@@ -97,6 +105,7 @@ def measure_foot():
             dist = np.linalg.norm(foot_pts[i] - foot_pts[j])
             if dist > max_dist:
                 max_dist = dist
+    
     foot_length_mm = max_dist / px_per_mm
 
     os.remove(img_path)

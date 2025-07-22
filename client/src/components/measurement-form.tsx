@@ -122,7 +122,7 @@ export default function MeasurementForm({
       const formData = new FormData();
       formData.append('photo', topDownPhoto);
       formData.append('paper_type', paperType);
-      const res = await axios.post('/api/measure-foot', formData, {
+      const res = await axios.post('https://zatorres-foot-measurement.onrender.com/api/measure-foot', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setMeasuredLength(res.data.foot_length_mm);
