@@ -1,4 +1,4 @@
-prepaimport React from 'react';
+import React from 'react';
 import zatorresLogo from '../../assets/Z logo.jpg';
 
 interface ZatorresLogoProps {
