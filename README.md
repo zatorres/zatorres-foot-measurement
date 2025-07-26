@@ -9,4 +9,7 @@ Flask backend for processing foot measurement photos.
 
 ## Latest Update: July 22, 2025 12:59 AM
 - Moved Flask app to root directory
-- Updated requirements.txt for Python 3.13 compatibility 
+- Updated requirements.txt for Python 3.13 compatibility
+
+## Force Deploy: July 22, 2025 1:00 AM
+- Ensuring Render picks up latest commit with Flask app 
